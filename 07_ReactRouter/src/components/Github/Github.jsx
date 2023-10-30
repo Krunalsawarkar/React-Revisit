@@ -11,6 +11,7 @@ function Github() {
   return (
     <div className="bg-gray-700 text-white text-3xl text-center p-4">
       Github repos :{data.public_repos}
+      <img src={data.avatar_url} alt="" width={300} />
     </div>
   );
 }
