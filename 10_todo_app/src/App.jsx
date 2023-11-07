@@ -20,7 +20,7 @@ function App() {
   const toggleComplete = (id) => {
     setTodos((prev) =>
       prev.map((prevTodo) =>
-        prevTodo === id
+        prevTodo.id === id
           ? { ...prevTodo, completed: !prevTodo.completed }
           : prevTodo
       )
@@ -29,6 +29,7 @@ function App() {
 
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem("todos"));
+
     if (todos && todos.length > 0) {
       setTodos(todos);
     }
@@ -50,7 +51,11 @@ function App() {
             <TodoForm />
           </div>
           <div className="flex flex-wrap gap-y-3">
-            <TodoItem />
+            {todos.map((todo) => (
+              <div key={todo.id} className="w-full">
+                <TodoItem todo={todo} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
