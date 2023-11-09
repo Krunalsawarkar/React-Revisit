@@ -52,7 +52,7 @@ function App() {
 
           <TodoAdd />
 
-          <TodoList />
+          <TodoList todos={todos} />
         </div>
       </div>
     </TodoProvider>
