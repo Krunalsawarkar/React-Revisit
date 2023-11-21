@@ -78,6 +78,32 @@ export class Service {
       throw error;
     }
   }
+
+  async uploadFile(file) {
+    try {
+      return await this.bucket.createFile(
+        config.appwriteBucketId,
+        ID.unique,
+        file
+      );
+    } catch (error) {
+      throw error;
+      return false;
+    }
+  }
+
+  async deleteFile(fileId) {
+    try {
+      return await this.bucket.deleteFile(config.appwriteBucketId, fileId);
+    } catch (error) {
+      throw error;
+      return false;
+    }
+  }
+
+  getFilePreview(fileId) {
+    return this.bucket.getFilePreview(config.appwriteBucketId, fileId);
+  }
 }
 
 const service = new Service();
