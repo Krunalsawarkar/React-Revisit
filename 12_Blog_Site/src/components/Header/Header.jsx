@@ -1,11 +1,12 @@
 import React from "react";
 import { Container, Logo, LogoutBtn } from "../index";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Header() {
   const navigate = useNavigate();
-  const authStatus = useSelector((state) => state.auth.status);
+  const authStatus = useSelector((state) => state.auth?.status || false);
+
   const navItems = [
     {
       name: "Home",
